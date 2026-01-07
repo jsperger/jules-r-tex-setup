@@ -39,4 +39,6 @@ sudo apt install -y "$DEST"
 rm "$DEST"
 
 # Verify installation
+R --version
 quarto --version
+air --version

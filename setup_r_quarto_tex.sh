@@ -8,6 +8,9 @@ sudo apt install -y texlive-latex-extra texlive-luatex texlive-science
 # ========================= R installation =========================
 curl -f https://raw.githubusercontent.com/eddelbuettel/r2u/refs/heads/master/inst/scripts/add_cranapt_noble.sh | sudo bash
 
+# ======================= Air installation =========================
+curl -LsSf https://github.com/posit-dev/air/releases/latest/download/air-installer.sh | sudo AIR_INSTALL_DIR=/usr/local/bin sh
+
 # ======================= Quarto installation ======================
 ## Define repository and architecture
 REPO="quarto-dev/quarto-cli"
@@ -36,4 +39,6 @@ sudo apt install -y "$DEST"
 rm "$DEST"
 
 # Verify installation
+R --version
 quarto --version
+air --version

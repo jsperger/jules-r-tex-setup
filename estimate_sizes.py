@@ -3,6 +3,9 @@ import os
 import re
 import json
 
+# Configuration mapping for setup scripts.
+# NOTE: This is hardcoded to match the .sh files to avoid complex parsing.
+# If the .sh files are modified, this configuration should be updated.
 SCRIPTS = {
     "setup_quarto_latest.sh": {
         "apt": [],
@@ -77,8 +80,10 @@ def get_apt_size(container_id, packages):
         if out.strip():
             kb = int(out.strip())
             return kb * 1024
-    except:
+    except ValueError:
         pass
+    except Exception as e:
+        print(f"Warning: Fallback size estimation failed: {e}")
 
     return 0
 
